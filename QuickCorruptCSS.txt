@@ -1,0 +1,6 @@
+This is the bookmarklet for the first version of the CSS Corruptor.
+Once activated, it will just auto-corrupt the whole page until nothing remains.
+
+Create a bookmark with this as the URL Contents:
+
+javascript:(function(){var elems=document.body.getElementsByTagName("*"),getOne=function(){return elems[Math.floor(Math.random()*elems.length)]},corruptMe=function(){var e=getOne().classList[0],s=getOne();s.classList[0];s.classList.add(e);var t=getOne().classList[1],a=getOne();s.classList[1];a.classList.add(t)};setInterval(function(){corruptMe()},1);})();
