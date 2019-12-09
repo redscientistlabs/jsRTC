@@ -1,0 +1,271 @@
+jsRTC for js-dosbox (dosgamesarchives.com edition)
+===========================================
+Author: Ircluzar
+
+jsRTC is a miniature Real-Time Corruptor written in javascript.
+The program is compiled into a javascript blob that is meant to be injected into webpages via a bookmark button (in the bookmark bar).
+
+This version of jsRTC is costomized for dosgamesarchive.com (link below)
+https://www.dosgamesarchive.com/play-online/
+
+Usage:
+To use this program, create a bookmark in your browser and put the text below as the URL.
+Navigate to the website you want to corrupt and click on the bookmark to execute jsRTC.
+
+jsRTC looks like and works similarly to the standard RTC but it is very minimalistic.
+The program will appear in the top-left corner of the website. 
+
+
+
+
+
+javascript:void%20function(){function%20a(a,b){var%20c=Math.floor,d=Math.ceil;return%20a=d(a),b=c(b),c(Math.random()*(b-a+1))+a}function%20b(){if(%22RANDOM%22==h)for(i=0;i%3Cf;i++){var%20b=dosbox.module.HEAPU8.length-1,c=a(0,b),d=a(0,255);dosbox.module.HEAPU8[c]=d}else%20if(%22TILT%22==h)for(i=0;i%3Cf;i++){var%20b=dosbox.module.HEAPU8.length-1,c=a(0,b),d=a(0,255),e=dosbox.module.HEAPU8[c];if(0==e)dosbox.module.HEAPU8[c]=255;else%20if(255==e)dosbox.module.HEAPU8[c]=0;else{var%20g=1;128%3Cd%26%26(g=-1),dosbox.module.HEAPU8[c]=e+g}}}function%20c(){e=setInterval(function(){b()},g*(1e3/60))}function%20d(){clearTimeout(e)}var%20e,f=1,g=1,h=%22RANDOM%22;(function(){var%20a=document.createElement(%22div%22);a.style.backgroundColor=%22%232C3C4C%22,a.style.width=%22190px%22,a.style.height=%22200px%22,a.style.color=%22white%22,a.style.padding=%2210px%2010px%2010px%2010px%22,a.style.position=%22fixed%22,a.style.borderWidth=%221px%22,a.style.borderStyle=%22solid%22,a.style.borderColor=%22black%22,a.style.left=%220px%22,a.style.top=%220px%22,a.style.fontFamily=%22Arial,%20Helvetica,%20sans-serif%22;var%20e=document.createElement(%22div%22);e.style.backgroundColor=%22%231B2530%22,e.style.width=%22210px%22,e.style.height=%2218px%22,e.style.color=%22white%22,e.style.position=%22fixed%22,e.style.left=%220px%22,e.style.top=%220px%22;var%20j=document.createElement(%22span%22);j.style.fontSize=%2210px%22,j.appendChild(document.createTextNode(%22jsRTC%20for%20dosgamesarchive.com%22)),e.appendChild(j),a.appendChild(e),a.appendChild(document.createElement(%22br%22)),a.appendChild(document.createTextNode(%22Intensity:%20%22));var%20k=document.createElement(%22input%22);k.style.width=%22105px%22,k.style.marginLeft=%2210px%22,k.style.backgroundColor=%22%231B2530%22,k.style.color=%22white%22,k.style.borderSize=%221px%22,k.setAttribute(%22type%22,%22number%22),k.setAttribute(%22id%22,%22nmIntensity%22),k.setAttribute(%22min%22,%221%22),k.setAttribute(%22value%22,%221%22),k.onchange=function(){f=k.value},a.appendChild(k),a.appendChild(document.createElement(%22br%22)),a.appendChild(document.createElement(%22br%22)),a.appendChild(document.createTextNode(%22Error%20Delay:%20%22));var%20l=document.createElement(%22input%22);l.style.width=%2285px%22,l.style.marginLeft=%2210px%22,l.style.backgroundColor=%22%231B2530%22,l.style.color=%22white%22,l.setAttribute(%22type%22,%22number%22),l.setAttribute(%22id%22,%22nmErrorDelay%22),l.setAttribute(%22min%22,%221%22),l.setAttribute(%22value%22,%221%22),l.onchange=function(){g=l.value},a.appendChild(l),a.appendChild(document.createElement(%22br%22)),a.appendChild(document.createElement(%22br%22)),a.appendChild(document.createTextNode(%22Error%20Type:%20%22));var%20m=document.createElement(%22select%22);m.style.width=%2294px%22,m.style.marginLeft=%2210px%22,m.style.backgroundColor=%22%231B2530%22,m.style.color=%22white%22,m.setAttribute(%22type%22,%22number%22),m.setAttribute(%22id%22,%22nmErrorDelay%22);var%20n=document.createElement(%22option%22);n.setAttribute(%22value%22,%22RANDOM%22),n.innerHTML=%22RANDOM%22,m.appendChild(n);var%20o=document.createElement(%22option%22);o.setAttribute(%22value%22,%22TILT%22),o.innerHTML=%22TILT%22,m.appendChild(o),m.setAttribute(%22value%22,%22RANDOM%22),m.onchange=function(){h=m.value},a.appendChild(m),a.appendChild(document.createElement(%22br%22)),a.appendChild(document.createElement(%22br%22));var%20p=document.createElement(%22button%22);p.style.width=%22190px%22,p.innerHTML=%22Start%20Auto-Corrupt%22,p.style.backgroundColor=%22%231B2530%22,p.style.color=%22%23FF4500%22,p.style.border=%22none%22,p.style.padding=%2211px%2032px%22,p.onclick=function(){%22Start%20Auto-Corrupt%22==p.innerHTML%3F(p.innerHTML=%22Stop%20Auto-Corrupt%22,c()):(p.innerHTML=%22Start%20Auto-Corrupt%22,d())},a.appendChild(p),a.appendChild(document.createElement(%22br%22));var%20q=document.createElement(%22button%22);q.style.marginTop=%225px%22,q.style.width=%22190px%22,q.innerHTML=%22Manual%20Blast%22,q.style.backgroundColor=%22%231B2530%22,q.style.color=%22%23FF4500%22,q.style.border=%22none%22,q.style.padding=%2211px%2032px%22,q.onclick=function(){b()},a.appendChild(q);var%20r=document.getElementById(%22network_container%22);r.appendChild(a)})()}();
+
+
+
+
+
+
+
+
+
+/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\
+   *** *** THE PART BELOW IS ONLY FOR DEVELOPMENT. *** *** 
+\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/
+
+Source and building documentation below
+
+
+
+
+
+
+
+
+
+Bookmarklet generated with:
+https://chriszarate.github.io/bookmarkleter/
+
+
+
+How to build:
+You can test the code by pasting it into your browser's console.
+Use the tool linked above to convert the code into a Bookmarklet
+
+
+Corruptor source:
+
+======================================================================
+DOM inject content 
+======================================================================
+
+
+var t;
+var intensity = 1;
+var errordelay = 1;
+var corrupttype = "RANDOM";
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function Blast() {
+	if(corrupttype == "RANDOM")
+	{
+		for(i = 0;i<intensity;i++)
+		{
+			var maxAddress = dosbox.module.HEAPU8.length -1;
+			var randomAddress = getRandomInt(0,maxAddress);
+			var randomByte = getRandomInt(0,255);
+			dosbox.module.HEAPU8[randomAddress] = randomByte;
+		}
+	}
+	else if(corrupttype == "TILT")
+	{
+		for(i = 0;i<intensity;i++)
+		{
+			var maxAddress = dosbox.module.HEAPU8.length -1;
+			var randomAddress = getRandomInt(0,maxAddress);
+			var randomByte = getRandomInt(0,255);
+			var curVal = dosbox.module.HEAPU8[randomAddress];
+			
+			if(curVal == 0)
+				dosbox.module.HEAPU8[randomAddress] = 255;
+			else if(curVal == 255)
+				dosbox.module.HEAPU8[randomAddress] = 0;
+			else
+			{
+				var tilt = 1;
+				if(randomByte > 128)
+					tilt = -1;
+				
+				dosbox.module.HEAPU8[randomAddress] = curVal + tilt;
+			}
+			
+		}
+	}
+}
+
+function startAutoCorrupt()
+{
+	t = setInterval(function(){
+	Blast();
+	},errordelay*(1000/60));
+}
+
+function stopAutoCorrupt()
+{
+	clearTimeout(t);
+}
+
+function displayPanel()
+{
+
+
+var para = document.createElement("div");
+para.style.backgroundColor = "#2C3C4C";
+para.style.width = "190px";
+para.style.height = "200px";
+para.style.color = "white";
+para.style.padding = "10px 10px 10px 10px";
+para.style.position = "fixed";
+para.style.borderWidth = "1px";
+para.style.borderStyle = "solid";
+para.style.borderColor = "black";
+para.style.left = "0px";
+para.style.top = "0px";
+para.style.fontFamily = "Arial, Helvetica, sans-serif";
+
+var topBar = document.createElement("div");
+topBar.style.backgroundColor = "#1B2530";
+topBar.style.width = "210px";
+topBar.style.height = "18px";
+topBar.style.color = "white";
+topBar.style.position = "fixed";
+topBar.style.left = "0px";
+topBar.style.top = "0px";
+var jsRTC = document.createElement("span");
+jsRTC.style.fontSize = "10px";
+jsRTC.appendChild(document.createTextNode("jsRTC for dosgamesarchive.com"));
+topBar.appendChild(jsRTC);
+para.appendChild(topBar);
+
+para.appendChild(document.createElement("br"));
+
+para.appendChild(document.createTextNode("Intensity: "));
+
+var nmIntensity = document.createElement("input");
+nmIntensity.style.width = "105px";
+nmIntensity.style.marginLeft = "10px";
+nmIntensity.style.backgroundColor = "#1B2530";
+nmIntensity.style.color = "white";
+nmIntensity.style.borderSize = "1px";
+nmIntensity.setAttribute("type","number");
+nmIntensity.setAttribute("id","nmIntensity");
+nmIntensity.setAttribute("min","1");
+nmIntensity.setAttribute("value","1");
+nmIntensity.onchange = function(){
+	intensity = nmIntensity.value;
+};
+
+para.appendChild(nmIntensity);
+
+para.appendChild(document.createElement("br"));
+para.appendChild(document.createElement("br"));
+
+para.appendChild(document.createTextNode("Error Delay: "));
+var nmErrorDelay = document.createElement("input");
+nmErrorDelay.style.width = "85px";
+nmErrorDelay.style.marginLeft = "10px";
+nmErrorDelay.style.backgroundColor = "#1B2530";
+nmErrorDelay.style.color = "white";
+nmErrorDelay.setAttribute("type","number");
+nmErrorDelay.setAttribute("id","nmErrorDelay");
+nmErrorDelay.setAttribute("min","1");
+nmErrorDelay.setAttribute("value","1");
+nmErrorDelay.onchange = function(){
+	errordelay = nmErrorDelay.value;
+};
+para.appendChild(nmErrorDelay);
+
+para.appendChild(document.createElement("br"));
+para.appendChild(document.createElement("br"));
+
+para.appendChild(document.createTextNode("Error Type: "));
+var cbErrorType = document.createElement("select");
+cbErrorType.style.width = "94px";
+cbErrorType.style.marginLeft = "10px";
+cbErrorType.style.backgroundColor = "#1B2530";
+cbErrorType.style.color = "white";
+cbErrorType.setAttribute("type","number");
+cbErrorType.setAttribute("id","nmErrorDelay");
+
+var optRandom = document.createElement("option");
+optRandom.setAttribute("value","RANDOM");
+optRandom.innerHTML = "RANDOM";
+cbErrorType.appendChild(optRandom);
+
+var optTilt = document.createElement("option");
+optTilt.setAttribute("value","TILT");
+optTilt.innerHTML = "TILT";
+cbErrorType.appendChild(optTilt);
+
+cbErrorType.setAttribute("value","RANDOM");
+cbErrorType.onchange = function(){
+	corrupttype = cbErrorType.value;
+};
+para.appendChild(cbErrorType);
+
+para.appendChild(document.createElement("br"));
+para.appendChild(document.createElement("br"));
+
+var btnStartAutoCorrupt = document.createElement("button");
+btnStartAutoCorrupt.style.width = "190px";
+btnStartAutoCorrupt.innerHTML = "Start Auto-Corrupt"
+btnStartAutoCorrupt.style.backgroundColor = "#1B2530";
+btnStartAutoCorrupt.style.color = "#FF4500";
+btnStartAutoCorrupt.style.border = "none";
+btnStartAutoCorrupt.style.padding = "11px 32px";
+btnStartAutoCorrupt.onclick = function(){
+	if(btnStartAutoCorrupt.innerHTML == "Start Auto-Corrupt")
+	{
+		btnStartAutoCorrupt.innerHTML = "Stop Auto-Corrupt"
+		startAutoCorrupt();
+	}
+	else
+	{
+		btnStartAutoCorrupt.innerHTML = "Start Auto-Corrupt"
+		stopAutoCorrupt();
+	}
+};
+
+para.appendChild(btnStartAutoCorrupt);
+
+para.appendChild(document.createElement("br"));
+
+var btnManualBlast = document.createElement("button");
+btnManualBlast.style.marginTop = "5px";
+btnManualBlast.style.width = "190px";
+btnManualBlast.innerHTML = "Manual Blast"
+btnManualBlast.style.backgroundColor = "#1B2530";
+btnManualBlast.style.color = "#FF4500";
+btnManualBlast.style.border = "none";
+btnManualBlast.style.padding = "11px 32px";
+btnManualBlast.onclick = function(){
+Blast();
+};
+
+para.appendChild(btnManualBlast);
+
+var element = document.getElementById("network_container");
+element.appendChild(para);
+
+}
+
+displayPanel();
+
+
+
+

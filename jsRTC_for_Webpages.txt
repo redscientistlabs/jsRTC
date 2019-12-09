@@ -1,0 +1,509 @@
+jsRTC for Webpages (CSS Corruptor)
+===========================================
+Author: Ircluzar
+
+jsRTC is a miniature Real-Time Corruptor written in javascript.
+The program is compiled into a javascript blob that is meant to be injected into webpages via a bookmark button (in the bookmark bar).
+
+Usage:
+To use this program, create a bookmark in your browser and put the text below as the URL.
+Navigate to the website you want to corrupt and click on the bookmark to execute jsRTC.
+
+jsRTC looks like and works similarly to the standard RTC but it is very minimalistic.
+The program will appear in the top-left corner of the website. 
+
+If the program looks distorted and the title bar of it says "(Safe mode)", it is because
+the website blocks XSS (which jsRTC uses to block CSS inheritance) and had to fallback to injecting itself into the DOM directly.
+
+
+
+
+javascript:void%20function(){function%20b(){var%20a=Math.floor;try{for(var%20b,c=parent.document.body.getElementsByTagName(%22*%22),d=!1;!d;)b=c[a(Math.random()*c.length)],%22jsRTC%22!=b.id%26%26(d=!0)}catch(a){alert(%22[This%20website%20is%20incompatible%20with%20jsRTC]%20%22+a.message)}return%20b}function%20c(){var%20c=b().classList[0],d=b();d.classList[0],d.classList.add(c);var%20e=b().classList[1],f=b();d.classList[1],f.classList.add(e)}function%20d(){for(i=0;i%3Ck;i++)c()}function%20e(){j=setInterval(function(){d()},l*(1e3/60))}function%20f(){clearTimeout(j)}function%20g(){var%20a=document.getElementById(%22jsRTC%22);a.parentNode.removeChild(a);var%20b=document.createElement(%22div%22);b.style.backgroundColor=%22%232C3C4C%22,b.style.width=%22190px%22,b.style.height=%22180px%22,b.style.color=%22white%22,b.style.padding=%2210px%2010px%2010px%2010px%22,b.style.position=%22fixed%22,b.style.borderWidth=%221px%22,b.style.borderStyle=%22solid%22,b.style.borderColor=%22black%22,b.style.left=%220px%22,b.style.top=%220px%22,b.style.fontFamily=%22Arial,%20Helvetica,%20sans-serif%22,b.style.zIndex=%2299999%22;var%20c=document.createElement(%22div%22);c.style.backgroundColor=%22%231B2530%22,c.style.width=%22210px%22,c.style.height=%2218px%22,c.style.color=%22white%22,c.style.position=%22fixed%22,c.style.left=%220px%22,c.style.top=%220px%22,c.style.paddingLeft=%2210px%22;var%20g=document.createElement(%22span%22);g.style.fontSize=%2210px%22,g.appendChild(document.createTextNode(%22jsRTC%20for%20Web%20pages%20(Safe%20mode)%22)),c.appendChild(g),b.appendChild(c),b.appendChild(document.createElement(%22br%22)),b.appendChild(document.createTextNode(%22Intensity:%20%22));var%20h=document.createElement(%22input%22);h.style.width=%22105px%22,h.style.marginLeft=%2210px%22,h.style.backgroundColor=%22%231B2530%22,h.style.color=%22white%22,h.style.borderSize=%221px%22,h.setAttribute(%22type%22,%22number%22),h.setAttribute(%22id%22,%22nmIntensity%22),h.setAttribute(%22min%22,%221%22),h.setAttribute(%22value%22,%221%22),h.onchange=function(){k=h.value},b.appendChild(h),b.appendChild(document.createElement(%22br%22)),b.appendChild(document.createElement(%22br%22)),b.appendChild(document.createTextNode(%22Error%20Delay:%20%22));var%20j=document.createElement(%22input%22);j.style.width=%2285px%22,j.style.marginLeft=%2210px%22,j.style.backgroundColor=%22%231B2530%22,j.style.color=%22white%22,j.setAttribute(%22type%22,%22number%22),j.setAttribute(%22id%22,%22nmErrorDelay%22),j.setAttribute(%22min%22,%221%22),j.setAttribute(%22value%22,%221%22),j.onchange=function(){l=j.value},b.appendChild(j),b.appendChild(document.createElement(%22br%22)),b.appendChild(document.createElement(%22br%22));var%20m=document.createElement(%22button%22);m.style.width=%22190px%22,m.innerHTML=%22Start%20Auto-Corrupt%22,m.style.backgroundColor=%22%231B2530%22,m.style.color=%22%23FF4500%22,m.style.border=%22none%22,m.style.padding=%2211px%2032px%22,m.onclick=function(){%22Start%20Auto-Corrupt%22==m.innerHTML%3F(m.innerHTML=%22Stop%20Auto-Corrupt%22,e()):(m.innerHTML=%22Start%20Auto-Corrupt%22,f())},b.appendChild(m),b.appendChild(document.createElement(%22br%22));var%20n=document.createElement(%22button%22);n.style.marginTop=%225px%22,n.style.width=%22190px%22,n.innerHTML=%22Manual%20Blast%22,n.style.backgroundColor=%22%231B2530%22,n.style.color=%22%23FF4500%22,n.style.border=%22none%22,n.style.padding=%2211px%2032px%22,n.onclick=function(){d()},b.appendChild(n),document.body.appendChild(b)}var%20h,j,a=!1,k=1,l=1;(function(){var%20b=new%20Blob([%22%3Chtml%3E%3Chead%3E%3Cscript%3Efunction%20getOne(){var%20e=parent.document.body.getElementsByTagName(\%22*\%22);if(!e)return%20void(parent.fallbackTrigger=!0);for(var%20t,n=!1;!n;)t=e[Math.floor(Math.random()*e.length)],\%22jsRTC\%22!=t.id%26%26(n=!0);return%20t%3Ft:void(parent.fallbackTrigger=!0)}function%20corruptOneCss(){var%20e=getOne().classList[0],t=getOne();t.classList[0],t.classList.add(e);var%20n=getOne().classList[1],r=getOne();t.classList[1],r.classList.add(n)}function%20Blast(){for(i=0;i%3Cintensity;i++)corruptOneCss()}function%20startAutoCorrupt(){t=setInterval(function(){Blast()},errordelay*(1e3/60))}function%20stopAutoCorrupt(){clearTimeout(t)}function%20displayPanel(){var%20e=(parent.document.body.getElementsByTagName(\%22*\%22),document.createElement(\%22div\%22));e.id=\%22jsRtcPanel\%22,e.name=\%22jsRtcPanel\%22,e.style.backgroundColor=\%22%232C3C4C\%22,e.style.width=\%22190px\%22,e.style.height=\%22180px\%22,e.style.color=\%22white\%22,e.style.padding=\%2210px%2010px%2010px%2010px\%22,e.style.position=\%22fixed\%22,e.style.borderWidth=\%221px\%22,e.style.borderStyle=\%22solid\%22,e.style.borderColor=\%22black\%22,e.style.left=\%220px\%22,e.style.top=\%220px\%22,e.style.fontFamily=\%22Arial,%20Helvetica,%20sans-serif\%22,e.style.zIndex=\%2299999\%22;var%20t=document.createElement(\%22div\%22);t.style.backgroundColor=\%22%231B2530\%22,t.style.width=\%22210px\%22,t.style.height=\%2218px\%22,t.style.color=\%22white\%22,t.style.position=\%22fixed\%22,t.style.left=\%220px\%22,t.style.top=\%220px\%22,t.style.paddingLeft=\%2210px\%22;var%20n=document.createElement(\%22span\%22);n.style.fontSize=\%2210px\%22,n.appendChild(document.createTextNode(\%22jsRTC%20for%20Web%20pages\%22)),t.appendChild(n),e.appendChild(t),e.appendChild(document.createElement(\%22br\%22)),e.appendChild(document.createTextNode(\%22Intensity:%20\%22));var%20r=document.createElement(\%22input\%22);r.style.width=\%22105px\%22,r.style.marginLeft=\%2210px\%22,r.style.backgroundColor=\%22%231B2530\%22,r.style.color=\%22white\%22,r.style.borderSize=\%221px\%22,r.setAttribute(\%22type\%22,\%22number\%22),r.setAttribute(\%22id\%22,\%22nmIntensity\%22),r.setAttribute(\%22min\%22,\%221\%22),r.setAttribute(\%22value\%22,\%221\%22),r.onchange=function(){intensity=r.value},e.appendChild(r),e.appendChild(document.createElement(\%22br\%22)),e.appendChild(document.createElement(\%22br\%22)),e.appendChild(document.createTextNode(\%22Error%20Delay:%20\%22));var%20l=document.createElement(\%22input\%22);l.style.width=\%2285px\%22,l.style.marginLeft=\%2210px\%22,l.style.backgroundColor=\%22%231B2530\%22,l.style.color=\%22white\%22,l.setAttribute(\%22type\%22,\%22number\%22),l.setAttribute(\%22id\%22,\%22nmErrorDelay\%22),l.setAttribute(\%22min\%22,\%221\%22),l.setAttribute(\%22value\%22,\%221\%22),l.onchange=function(){errordelay=l.value},e.appendChild(l),e.appendChild(document.createElement(\%22br\%22)),e.appendChild(document.createElement(\%22br\%22));var%20o=document.createElement(\%22button\%22);o.style.width=\%22190px\%22,o.innerHTML=\%22Start%20Auto-Corrupt\%22,o.style.backgroundColor=\%22%231B2530\%22,o.style.color=\%22%23FF4500\%22,o.style.border=\%22none\%22,o.style.padding=\%2211px%2032px\%22,o.onclick=function(){\%22Start%20Auto-Corrupt\%22==o.innerHTML%3F(o.innerHTML=\%22Stop%20Auto-Corrupt\%22,startAutoCorrupt()):(o.innerHTML=\%22Start%20Auto-Corrupt\%22,stopAutoCorrupt())},e.appendChild(o),e.appendChild(document.createElement(\%22br\%22));var%20a=document.createElement(\%22button\%22);a.style.marginTop=\%225px\%22,a.style.width=\%22190px\%22,a.innerHTML=\%22Manual%20Blast\%22,a.style.backgroundColor=\%22%231B2530\%22,a.style.color=\%22%23FF4500\%22,a.style.border=\%22none\%22,a.style.padding=\%2211px%2032px\%22,a.onclick=function(){Blast()},e.appendChild(a),document.body.appendChild(e),loaded=!0}var%20t,intensity=1,errordelay=1,loaded=!1%3C/script%3E%3C/head%3E%3Cbody%20onload=displayPanel()%3E%3C/body%3E%3C/html%3E%22],{type:%22text/html%22}),c=window.URL.createObjectURL(b),d=document.createElement(%22iframe%22);d.id=%22jsRTC%22,d.name=%22jsRTC%22,d.style.width=%22210px%22,d.style.height=%22200px%22,d.style.padding=%220px%200px%200px%200px%22,d.style.position=%22fixed%22,d.style.borderWidth=%221px%22,d.style.borderStyle=%22solid%22,d.style.borderColor=%22black%22,d.style.left=%220px%22,d.style.top=%220px%22,d.style.zIndex=%2299999%22,d.src=c,document.body.appendChild(d),h=setInterval(function(){a%26%26(clearTimeout(h),g()),a=!0;window.frames.jsRTC.document.getElementById(%22jsRtcPanel%22);a=!1},1e3)})()}();
+
+
+
+
+
+
+
+
+
+
+
+
+/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\
+   *** *** THE PART BELOW IS ONLY FOR DEVELOPMENT. *** *** 
+\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/|\|/
+
+
+
+
+
+
+
+Source and building documentation below
+
+
+This is only for development
+
+Bookmarklet generated with:
+https://chriszarate.github.io/bookmarkleter/
+
+Minified html blob generated with:
+https://html-minifier.com/
+
+
+How to build:
+Due to the hazardous nature of injecting code into a webpage that uses css Globals,
+the corruptor has to be isolated into an iFrame. There are two codebases for this
+version, one is for the corruptor in the iFrame and the other is for the corruptor
+if it falls back to injecting itself into the DOM. I could probably refactor it to
+use a class but i doubt i'll ever have to maintain this code in the future.
+
+You have to use html-minifier to turn the iframe jsRTC into a one-line blob.
+Then, paste that blob in the place of the current blob in the DOM inject content displayFrame() method.
+Once that is all done, you can test the code by pasting it in the console of your browser.
+
+To turn the final code into a bookmarklet, use the tool linked above.
+
+
+Corruptor source:
+
+
+======================================================================
+DOM inject content (jsRTC that fallbacks into the DOM)
+======================================================================
+
+var fallbackCheck;
+var fallbackTrigger = false;
+
+var t;
+var intensity = 1;
+var errordelay = 1;
+
+function getOne()
+{
+	try {
+	
+		var elems = parent.document.body.getElementsByTagName("*");
+		
+		var found = false;
+		var elem;
+		while(!found)
+		{
+			elem = elems[Math.floor(Math.random() * elems.length)];
+			
+			if(elem.id != "jsRTC")
+			{
+				found = true;
+			}
+		}
+	}
+	catch(err) {
+		alert("[This website is incompatible with jsRTC] " + err.message);
+	}
+	
+	return elem;
+}
+
+function corruptOneCss()
+{
+    var e = getOne().classList[0],
+    s = getOne();
+    s.classList[0];
+    s.classList.add(e);
+    var t = getOne().classList[1],
+    a = getOne();
+    s.classList[1];
+    a.classList.add(t)
+}
+
+
+function Blast() 
+{
+	for(i = 0;i<intensity;i++)
+	{
+		corruptOneCss();
+	}
+}
+
+function startAutoCorrupt()
+{
+	t = setInterval(function(){
+	Blast();
+	},errordelay*(1000/60));
+}
+
+function stopAutoCorrupt()
+{
+	clearTimeout(t);
+}
+
+function fallback()
+{
+
+var element = document.getElementById("jsRTC");
+element.parentNode.removeChild(element);
+
+
+var para = document.createElement("div");
+para.style.backgroundColor = "#2C3C4C";
+para.style.width = "190px";
+para.style.height = "180px";
+para.style.color = "white";
+para.style.padding = "10px 10px 10px 10px";
+para.style.position = "fixed";
+para.style.borderWidth = "1px";
+para.style.borderStyle = "solid";
+para.style.borderColor = "black";
+para.style.left = "0px";
+para.style.top = "0px";
+para.style.fontFamily = "Arial, Helvetica, sans-serif";
+para.style.zIndex = "99999";
+
+var topBar = document.createElement("div");
+topBar.style.backgroundColor = "#1B2530";
+topBar.style.width = "210px";
+topBar.style.height = "18px";
+topBar.style.color = "white";
+topBar.style.position = "fixed";
+topBar.style.left = "0px";
+topBar.style.top = "0px";
+topBar.style.paddingLeft = "10px";
+var jsRTC = document.createElement("span");
+jsRTC.style.fontSize = "10px";
+jsRTC.appendChild(document.createTextNode("jsRTC for Web pages (Safe mode)"));
+topBar.appendChild(jsRTC);
+para.appendChild(topBar);
+
+para.appendChild(document.createElement("br"));
+
+para.appendChild(document.createTextNode("Intensity: "));
+
+var nmIntensity = document.createElement("input");
+nmIntensity.style.width = "105px";
+nmIntensity.style.marginLeft = "10px";
+nmIntensity.style.backgroundColor = "#1B2530";
+nmIntensity.style.color = "white";
+nmIntensity.style.borderSize = "1px";
+nmIntensity.setAttribute("type","number");
+nmIntensity.setAttribute("id","nmIntensity");
+nmIntensity.setAttribute("min","1");
+nmIntensity.setAttribute("value","1");
+nmIntensity.onchange = function(){
+	intensity = nmIntensity.value;
+};
+
+para.appendChild(nmIntensity);
+
+para.appendChild(document.createElement("br"));
+para.appendChild(document.createElement("br"));
+
+para.appendChild(document.createTextNode("Error Delay: "));
+var nmErrorDelay = document.createElement("input");
+nmErrorDelay.style.width = "85px";
+nmErrorDelay.style.marginLeft = "10px";
+nmErrorDelay.style.backgroundColor = "#1B2530";
+nmErrorDelay.style.color = "white";
+nmErrorDelay.setAttribute("type","number");
+nmErrorDelay.setAttribute("id","nmErrorDelay");
+nmErrorDelay.setAttribute("min","1");
+nmErrorDelay.setAttribute("value","1");
+nmErrorDelay.onchange = function(){
+	errordelay = nmErrorDelay.value;
+};
+para.appendChild(nmErrorDelay);
+
+para.appendChild(document.createElement("br"));
+para.appendChild(document.createElement("br"));
+
+var btnStartAutoCorrupt = document.createElement("button");
+btnStartAutoCorrupt.style.width = "190px";
+btnStartAutoCorrupt.innerHTML = "Start Auto-Corrupt"
+btnStartAutoCorrupt.style.backgroundColor = "#1B2530";
+btnStartAutoCorrupt.style.color = "#FF4500";
+btnStartAutoCorrupt.style.border = "none";
+btnStartAutoCorrupt.style.padding = "11px 32px";
+btnStartAutoCorrupt.onclick = function(){
+	if(btnStartAutoCorrupt.innerHTML == "Start Auto-Corrupt")
+	{
+		btnStartAutoCorrupt.innerHTML = "Stop Auto-Corrupt"
+		startAutoCorrupt();
+	}
+	else
+	{
+		btnStartAutoCorrupt.innerHTML = "Start Auto-Corrupt"
+		stopAutoCorrupt();
+	}
+};
+
+para.appendChild(btnStartAutoCorrupt);
+
+para.appendChild(document.createElement("br"));
+
+var btnManualBlast = document.createElement("button");
+btnManualBlast.style.marginTop = "5px";
+btnManualBlast.style.width = "190px";
+btnManualBlast.innerHTML = "Manual Blast"
+btnManualBlast.style.backgroundColor = "#1B2530";
+btnManualBlast.style.color = "#FF4500";
+btnManualBlast.style.border = "none";
+btnManualBlast.style.padding = "11px 32px";
+btnManualBlast.onclick = function(){
+Blast();
+};
+
+para.appendChild(btnManualBlast);
+
+//var element = document.getElementById("body");
+document.body.appendChild(para);
+
+}
+
+
+
+function displayFrame()
+{
+	
+var blob = new Blob(['<html><head><script>function getOne(){var e=parent.document.body.getElementsByTagName("*");if(!e)return void(parent.fallbackTrigger=!0);for(var t,n=!1;!n;)t=e[Math.floor(Math.random()*e.length)],"jsRTC"!=t.id&&(n=!0);return t?t:void(parent.fallbackTrigger=!0)}function corruptOneCss(){var e=getOne().classList[0],t=getOne();t.classList[0],t.classList.add(e);var n=getOne().classList[1],r=getOne();t.classList[1],r.classList.add(n)}function Blast(){for(i=0;i<intensity;i++)corruptOneCss()}function startAutoCorrupt(){t=setInterval(function(){Blast()},errordelay*(1e3/60))}function stopAutoCorrupt(){clearTimeout(t)}function displayPanel(){var e=(parent.document.body.getElementsByTagName("*"),document.createElement("div"));e.id="jsRtcPanel",e.name="jsRtcPanel",e.style.backgroundColor="#2C3C4C",e.style.width="190px",e.style.height="180px",e.style.color="white",e.style.padding="10px 10px 10px 10px",e.style.position="fixed",e.style.borderWidth="1px",e.style.borderStyle="solid",e.style.borderColor="black",e.style.left="0px",e.style.top="0px",e.style.fontFamily="Arial, Helvetica, sans-serif",e.style.zIndex="99999";var t=document.createElement("div");t.style.backgroundColor="#1B2530",t.style.width="210px",t.style.height="18px",t.style.color="white",t.style.position="fixed",t.style.left="0px",t.style.top="0px",t.style.paddingLeft="10px";var n=document.createElement("span");n.style.fontSize="10px",n.appendChild(document.createTextNode("jsRTC for Web pages")),t.appendChild(n),e.appendChild(t),e.appendChild(document.createElement("br")),e.appendChild(document.createTextNode("Intensity: "));var r=document.createElement("input");r.style.width="105px",r.style.marginLeft="10px",r.style.backgroundColor="#1B2530",r.style.color="white",r.style.borderSize="1px",r.setAttribute("type","number"),r.setAttribute("id","nmIntensity"),r.setAttribute("min","1"),r.setAttribute("value","1"),r.onchange=function(){intensity=r.value},e.appendChild(r),e.appendChild(document.createElement("br")),e.appendChild(document.createElement("br")),e.appendChild(document.createTextNode("Error Delay: "));var l=document.createElement("input");l.style.width="85px",l.style.marginLeft="10px",l.style.backgroundColor="#1B2530",l.style.color="white",l.setAttribute("type","number"),l.setAttribute("id","nmErrorDelay"),l.setAttribute("min","1"),l.setAttribute("value","1"),l.onchange=function(){errordelay=l.value},e.appendChild(l),e.appendChild(document.createElement("br")),e.appendChild(document.createElement("br"));var o=document.createElement("button");o.style.width="190px",o.innerHTML="Start Auto-Corrupt",o.style.backgroundColor="#1B2530",o.style.color="#FF4500",o.style.border="none",o.style.padding="11px 32px",o.onclick=function(){"Start Auto-Corrupt"==o.innerHTML?(o.innerHTML="Stop Auto-Corrupt",startAutoCorrupt()):(o.innerHTML="Start Auto-Corrupt",stopAutoCorrupt())},e.appendChild(o),e.appendChild(document.createElement("br"));var a=document.createElement("button");a.style.marginTop="5px",a.style.width="190px",a.innerHTML="Manual Blast",a.style.backgroundColor="#1B2530",a.style.color="#FF4500",a.style.border="none",a.style.padding="11px 32px",a.onclick=function(){Blast()},e.appendChild(a),document.body.appendChild(e),loaded=!0}var t,intensity=1,errordelay=1,loaded=!1</script></head><body onload=displayPanel()></body></html>'], {type : 'text/html'});
+var newurl = window.URL.createObjectURL(blob);
+
+
+var para = document.createElement("iframe");
+para.id = "jsRTC";
+para.name = "jsRTC";
+para.style.width = "210px";
+para.style.height = "200px";
+para.style.padding = "0px 0px 0px 0px";
+para.style.position = "fixed";
+para.style.borderWidth = "1px";
+para.style.borderStyle = "solid";
+para.style.borderColor = "black";
+para.style.left = "0px";
+para.style.top = "0px";
+para.style.zIndex = "99999";
+para.src = newurl;
+
+document.body.appendChild(para);
+
+
+fallbackCheck = setInterval(function(){
+
+	if(fallbackTrigger)
+	{
+		clearTimeout(fallbackCheck);
+		fallback();
+	}
+
+	fallbackTrigger = true;
+	var panel = window.frames["jsRTC"].document.getElementById("jsRtcPanel");
+	fallbackTrigger = false;
+
+},(1000));
+
+
+}
+
+displayFrame();
+
+
+======================================================================
+iframe content (jrRTC that runs inside the iFrame)
+======================================================================
+
+<html><head><script>
+
+var t;
+var intensity = 1;
+var errordelay = 1;
+var loaded = false;
+
+function getOne()
+{
+		
+	var elems = parent.document.body.getElementsByTagName("*");
+	
+	if(!elems)
+	{
+	parent.fallbackTrigger = true;
+	return;
+	}
+	
+	var found = false;
+	var elem;
+	while(!found)
+	{
+		elem = elems[Math.floor(Math.random() * elems.length)];
+		
+		if(elem.id != "jsRTC")
+		{
+			found = true;
+		}
+	}
+
+	if(!elem)
+	{
+	parent.fallbackTrigger = true;
+	return;
+	}
+
+	return elem;
+}
+
+function corruptOneCss()
+{
+    var e = getOne().classList[0],
+    s = getOne();
+    s.classList[0];
+    s.classList.add(e);
+    var t = getOne().classList[1],
+    a = getOne();
+    s.classList[1];
+    a.classList.add(t)
+}
+
+
+function Blast() 
+{
+	for(i = 0;i<intensity;i++)
+	{
+		corruptOneCss();
+	}
+}
+
+function startAutoCorrupt()
+{
+	t = setInterval(function(){
+	Blast();
+	},errordelay*(1000/60));
+}
+
+function stopAutoCorrupt()
+{
+	clearTimeout(t);
+}
+
+
+function displayPanel()
+{
+var elems = parent.document.body.getElementsByTagName("*");
+
+var para = document.createElement("div");
+para.id = "jsRtcPanel";
+para.name = "jsRtcPanel";
+para.style.backgroundColor = "#2C3C4C";
+para.style.width = "190px";
+para.style.height = "180px";
+para.style.color = "white";
+para.style.padding = "10px 10px 10px 10px";
+para.style.position = "fixed";
+para.style.borderWidth = "1px";
+para.style.borderStyle = "solid";
+para.style.borderColor = "black";
+para.style.left = "0px";
+para.style.top = "0px";
+para.style.fontFamily = "Arial, Helvetica, sans-serif";
+para.style.zIndex = "99999";
+
+var topBar = document.createElement("div");
+topBar.style.backgroundColor = "#1B2530";
+topBar.style.width = "210px";
+topBar.style.height = "18px";
+topBar.style.color = "white";
+topBar.style.position = "fixed";
+topBar.style.left = "0px";
+topBar.style.top = "0px";
+topBar.style.paddingLeft = "10px";
+var jsRTC = document.createElement("span");
+jsRTC.style.fontSize = "10px";
+jsRTC.appendChild(document.createTextNode("jsRTC for Web pages"));
+topBar.appendChild(jsRTC);
+para.appendChild(topBar);
+
+para.appendChild(document.createElement("br"));
+
+para.appendChild(document.createTextNode("Intensity: "));
+
+var nmIntensity = document.createElement("input");
+nmIntensity.style.width = "105px";
+nmIntensity.style.marginLeft = "10px";
+nmIntensity.style.backgroundColor = "#1B2530";
+nmIntensity.style.color = "white";
+nmIntensity.style.borderSize = "1px";
+nmIntensity.setAttribute("type","number");
+nmIntensity.setAttribute("id","nmIntensity");
+nmIntensity.setAttribute("min","1");
+nmIntensity.setAttribute("value","1");
+nmIntensity.onchange = function(){
+	intensity = nmIntensity.value;
+};
+
+para.appendChild(nmIntensity);
+
+para.appendChild(document.createElement("br"));
+para.appendChild(document.createElement("br"));
+
+para.appendChild(document.createTextNode("Error Delay: "));
+var nmErrorDelay = document.createElement("input");
+nmErrorDelay.style.width = "85px";
+nmErrorDelay.style.marginLeft = "10px";
+nmErrorDelay.style.backgroundColor = "#1B2530";
+nmErrorDelay.style.color = "white";
+nmErrorDelay.setAttribute("type","number");
+nmErrorDelay.setAttribute("id","nmErrorDelay");
+nmErrorDelay.setAttribute("min","1");
+nmErrorDelay.setAttribute("value","1");
+nmErrorDelay.onchange = function(){
+	errordelay = nmErrorDelay.value;
+};
+para.appendChild(nmErrorDelay);
+
+para.appendChild(document.createElement("br"));
+para.appendChild(document.createElement("br"));
+
+var btnStartAutoCorrupt = document.createElement("button");
+btnStartAutoCorrupt.style.width = "190px";
+btnStartAutoCorrupt.innerHTML = "Start Auto-Corrupt"
+btnStartAutoCorrupt.style.backgroundColor = "#1B2530";
+btnStartAutoCorrupt.style.color = "#FF4500";
+btnStartAutoCorrupt.style.border = "none";
+btnStartAutoCorrupt.style.padding = "11px 32px";
+btnStartAutoCorrupt.onclick = function(){
+	if(btnStartAutoCorrupt.innerHTML == "Start Auto-Corrupt")
+	{
+		btnStartAutoCorrupt.innerHTML = "Stop Auto-Corrupt"
+		startAutoCorrupt();
+	}
+	else
+	{
+		btnStartAutoCorrupt.innerHTML = "Start Auto-Corrupt"
+		stopAutoCorrupt();
+	}
+};
+
+para.appendChild(btnStartAutoCorrupt);
+
+para.appendChild(document.createElement("br"));
+
+var btnManualBlast = document.createElement("button");
+btnManualBlast.style.marginTop = "5px";
+btnManualBlast.style.width = "190px";
+btnManualBlast.innerHTML = "Manual Blast"
+btnManualBlast.style.backgroundColor = "#1B2530";
+btnManualBlast.style.color = "#FF4500";
+btnManualBlast.style.border = "none";
+btnManualBlast.style.padding = "11px 32px";
+btnManualBlast.onclick = function(){
+Blast();
+};
+
+para.appendChild(btnManualBlast);
+
+//var element = document.getElementById("body");
+document.body.appendChild(para);
+
+
+loaded = true;
+
+}
+</script></head><body onload="displayPanel()"></body></html>
